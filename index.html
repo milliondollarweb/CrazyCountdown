@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30-Tage Countdown</title>
+    <title>Countdown bis 19.06.2026</title>
     <style>
         body {
             display: flex;
@@ -75,29 +75,31 @@
     </iframe>
 
     <script>
-        const targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 30);
+        // Festes Ziel-Datum: 19.06.2026 um 16:30 (lokale Zeit)
+        const targetDate = new Date("2026-06-19T16:30:00");
 
         function updateCountdown() {
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const distance = targetDate.getTime() - now;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("countdown").innerHTML =
-                days + " Tage " + hours + " Std. " + minutes + " Min. " + seconds + " Sek.";
+            const countdownElement = document.getElementById("countdown");
 
-            if (distance < 0) {
+            if (distance >= 0) {
+                countdownElement.innerHTML =
+                    days + " Tage " + hours + " Std. " + minutes + " Min. " + seconds + " Sek.";
+            } else {
+                countdownElement.innerHTML = "Der Countdown ist beendet!";
                 clearInterval(countdownInterval);
-                document.getElementById("countdown").innerHTML = "Der Countdown ist beendet!";
             }
         }
 
         const countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initialer Aufruf
+        updateCountdown();
     </script>
 </body>
 </html>
