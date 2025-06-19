@@ -39,11 +39,17 @@
         form {
             display: flex;
             justify-content: center;
+            margin-bottom: 20px;
         }
 
         input[type="image"] {
             max-width: 100%;
             height: auto;
+        }
+
+        iframe {
+            border: none;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -58,6 +64,15 @@
         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
         <img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
     </form>
+
+    <!-- Spendenkarte (PayPal Campaign Card) -->
+    <iframe
+        src="https://www.paypal.com/giving/campaigns?campaign_id=EJYBL7LYUFU98"
+        title="PayPal donate campaign card"
+        width="382"
+        height="550"
+        scrolling="no">
+    </iframe>
 
     <script>
         const targetDate = new Date();
